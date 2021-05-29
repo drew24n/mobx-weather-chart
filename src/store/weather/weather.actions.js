@@ -11,7 +11,7 @@ const setWeatherData = (weather) => ({
   weather,
 });
 
-const setError = (error) => ({
+export const setError = (error) => ({
   type: SET_ERROR,
   error,
 });

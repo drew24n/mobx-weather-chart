@@ -10,6 +10,6 @@ describe('App', () => {
 
   it('renders 1 component', () => {
     renderWithRedux(<App />);
-    expect(screen.getByTestId('app').children.length).toBe(1);
+    expect(screen.getByTestId('app').children.length).toBe(2);
   });
 });
