@@ -1,0 +1,36 @@
+{
+    "extends": ["airbnb-base", "react-app", "react-app/jest", "plugin:jsx-a11y/recommended"],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["jsx-a11y", "react", "react-hooks"],
+    "rules": {
+        "react/jsx-uses-react": "off",
+        "object-curly-newline": "off",
+        "react/react-in-jsx-scope": "off",
+        "implicit-arrow-linebreak": "off",
+        "no-class-assign": 0,
+        "import/no-mutable-exports": 0,
+        "linebreak-style": 0,
+        "arrow-body-style": ["error", "as-needed"],
+        "import/extensions": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/no-unresolved": 0,
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "operator-linebreak": ["error", "before", { "overrides": { "||": "after", "&&": "after" } }],
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "import/prefer-default-export": 0,
+        "react/prop-types": 0,
+        "no-confusing-arrow": "off",
+        "indent": "off",
+        "function-paren-newline": "off",
+        "no-use-before-define": "off"
+    }
+}
