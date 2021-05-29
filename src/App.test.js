@@ -8,8 +8,8 @@ describe('App', () => {
     expect(screen.getByTestId('app')).toBeInTheDocument();
   });
 
-  it('renders 1 component', () => {
+  it('renders 3 elements', () => {
     renderWithRedux(<App />);
-    expect(screen.getByTestId('app').children.length).toBe(2);
+    expect(screen.getByTestId('app').children.length).toBe(3);
   });
 });
