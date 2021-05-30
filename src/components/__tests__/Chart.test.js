@@ -1,24 +1,27 @@
-import { screen } from '@testing-library/react';
 import { renderWithRedux } from '../../helpers/testExtension';
 import Chart from '../Chart';
 import { store } from '../../store/store';
-import { setError } from '../../store/weather/weather.actions';
+import { setWeatherData } from '../../store/weather/weather.actions';
+
+const weatherData = {
+  city: {
+    name: 'Kyiv',
+  },
+  cod: '200',
+  list: [
+    {
+      dt_txt: '2021-05-30 15:00:00',
+      main: {
+        temp: 15.47,
+      },
+    },
+  ],
+};
 
 describe('Chart', () => {
   it('should render without crash', () => {
+    store.dispatch(setWeatherData(weatherData));
     renderWithRedux(<Chart />);
-    expect(screen.getByTestId('chart')).toBeInTheDocument();
-  });
-
-  it('should render error message', () => {
-    store.dispatch(setError('test error message'));
-    renderWithRedux(<Chart />);
-    expect(screen.getByTestId('chart')).toHaveTextContent('test error message');
-    store.dispatch(setError(''));
-  });
-
-  it('should have no children when there is no data', () => {
-    renderWithRedux(<Chart />);
-    expect(screen.getByTestId('chart').children.length).toBe(0);
+    expect(document.querySelector('.recharts-responsive-container')).toBeInTheDocument();
   });
 });

@@ -5,6 +5,7 @@ import { getWeatherData } from '../store/weather/weather.actions';
 
 const useStyles = createUseStyles({
   wrapper: {
+    marginBottom: '20px',
     '& input:focus': {
       outline: 'none',
     },

@@ -1,4 +1,5 @@
 import { createUseStyles } from 'react-jss';
+import { useSelector } from 'react-redux';
 
 const useStyles = createUseStyles({
   '@global': {
@@ -35,10 +36,16 @@ const useStyles = createUseStyles({
 function Loader() {
   const classes = useStyles();
 
+  const { isLoading } = useSelector((state) => state.weather);
+
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.circle} />
-    </div>
+    <>
+      {isLoading && (
+        <div className={classes.wrapper} data-testid="loader">
+          <div className={classes.circle} />
+        </div>
+      )}
+    </>
   );
 }
 

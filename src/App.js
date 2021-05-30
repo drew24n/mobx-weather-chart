@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
 import { createUseStyles } from 'react-jss';
 import Search from './components/Search';
 import Chart from './components/Chart';
 import Loader from './components/Loader';
+import Error from './components/Error';
 
 const useStyles = createUseStyles({
   '@global': {
@@ -22,14 +22,14 @@ const useStyles = createUseStyles({
 
 function App() {
   const classes = useStyles();
-  const { isLoading } = useSelector((state) => state.weather);
 
   return (
     <div className={classes.wrapper} data-testid="app">
-      {isLoading && <Loader />}
       <h1>Weather</h1>
       <Search />
+      <Error />
       <Chart />
+      <Loader />
     </div>
   );
 }

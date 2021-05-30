@@ -7,9 +7,4 @@ describe('App', () => {
     renderWithRedux(<App />);
     expect(screen.getByTestId('app')).toBeInTheDocument();
   });
-
-  it('renders 3 elements', () => {
-    renderWithRedux(<App />);
-    expect(screen.getByTestId('app').children.length).toBe(3);
-  });
 });

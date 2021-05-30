@@ -1,12 +1,12 @@
 import { SET_ERROR, SET_IS_LOADING, SET_WEATHER_DATA } from './weather.constants';
 import { getWeatherFromApi } from '../../api/getWeatherFromApi';
 
-const setIsLoading = (isLoading) => ({
+export const setIsLoading = (isLoading) => ({
   type: SET_IS_LOADING,
   isLoading,
 });
 
-const setWeatherData = (weather) => ({
+export const setWeatherData = (weather) => ({
   type: SET_WEATHER_DATA,
   weather,
 });
