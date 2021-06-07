@@ -1,4 +1,4 @@
 import { callApi } from '../helpers/callApi';
 
-export const getWeatherFromApi = async ({ city }) =>
+export const getWeatherFromApi = ({ city }) =>
   callApi.get('', { params: { q: city, units: 'metric' } });

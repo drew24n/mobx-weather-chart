@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUseStyles } from 'react-jss';
 import { getWeatherData } from '../store/weather/weather.actions';
+import { getCityName } from '../store/weather/weather.selectors';
 
 const useStyles = createUseStyles({
   wrapper: {
@@ -21,15 +22,17 @@ function Search() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
 
+  const city = search.trim().toLowerCase();
+  const previousSearchCity = useSelector(getCityName).toLowerCase();
+
   const handleSearch = (e) => {
     e.preventDefault();
-    const city = search.trim();
-    if (!city) {
+    try {
+      if (!city || city === previousSearchCity) return;
+      dispatch(getWeatherData({ city }));
+    } finally {
       setSearch('');
-      return;
     }
-    dispatch(getWeatherData({ city }));
-    setSearch('');
   };
 
   return (
