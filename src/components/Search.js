@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { createUseStyles } from 'react-jss';
-import { getWeatherData } from '../store/weather/weather.actions';
+import { observer } from 'mobx-react-lite';
+import weather from '../store/weather';
 
 const useStyles = createUseStyles({
   wrapper: {
@@ -19,14 +19,12 @@ function Search() {
   const classes = useStyles();
 
   const [search, setSearch] = useState('');
-  const dispatch = useDispatch();
 
   const handleSearch = (e) => {
     e.preventDefault();
     const city = search.trim().toLowerCase();
     if (!city) return;
-    dispatch(getWeatherData({ city }));
-    setSearch('');
+    weather.getWeatherData({ city }).then(() => setSearch(''));
   };
 
   return (
@@ -42,4 +40,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default observer(Search);

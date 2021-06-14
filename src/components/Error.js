@@ -1,6 +1,6 @@
-import { useSelector } from 'react-redux';
 import { createUseStyles } from 'react-jss';
-import { getError } from '../store/weather/weather.selectors';
+import { observer } from 'mobx-react-lite';
+import weather from '../store/weather';
 
 const useStyles = createUseStyles({
   error: {
@@ -11,17 +11,15 @@ const useStyles = createUseStyles({
 function Error() {
   const classes = useStyles();
 
-  const error = useSelector(getError);
-
   return (
     <>
-      {error && (
+      {weather.error && (
         <p className={classes.error} data-testid="error">
-          {error}
+          {weather.error}
         </p>
       )}
     </>
   );
 }
 
-export default Error;
+export default observer(Error);

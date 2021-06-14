@@ -8,16 +8,14 @@ import {
   Bar,
   ResponsiveContainer,
 } from 'recharts';
-import { useSelector } from 'react-redux';
-import { getChartData } from '../store/weather/weather.selectors';
+import { observer } from 'mobx-react-lite';
+import weather from '../store/weather';
 
 function Chart() {
-  const data = useSelector(getChartData);
-
   return (
-    data.length >= 1 && (
+    weather.chartData.length >= 1 && (
       <ResponsiveContainer data-testid="chart" width="95%" height={400}>
-        <BarChart data={data}>
+        <BarChart data={weather.chartData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" />
           <YAxis />
@@ -30,4 +28,4 @@ function Chart() {
   );
 }
 
-export default Chart;
+export default observer(Chart);

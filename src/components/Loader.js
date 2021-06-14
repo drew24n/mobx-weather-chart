@@ -1,5 +1,6 @@
 import { createUseStyles } from 'react-jss';
-import { useSelector } from 'react-redux';
+import { observer } from 'mobx-react-lite';
+import weather from '../store/weather';
 
 const useStyles = createUseStyles({
   '@global': {
@@ -36,11 +37,9 @@ const useStyles = createUseStyles({
 function Loader() {
   const classes = useStyles();
 
-  const { isLoading } = useSelector((state) => state.weather);
-
   return (
     <>
-      {isLoading && (
+      {weather.isLoading && (
         <div className={classes.wrapper} data-testid="loader">
           <div className={classes.circle} />
         </div>
@@ -49,4 +48,4 @@ function Loader() {
   );
 }
 
-export default Loader;
+export default observer(Loader);

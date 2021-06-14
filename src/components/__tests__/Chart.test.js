@@ -1,7 +1,6 @@
-import { renderWithRedux } from '../../helpers/testExtension';
+import { render } from '@testing-library/react';
 import Chart from '../Chart';
-import { store } from '../../store/store';
-import { setWeatherData } from '../../store/weather/weather.actions';
+import weather from '../../store/weather';
 
 const weatherData = {
   city: {
@@ -20,8 +19,8 @@ const weatherData = {
 
 describe('Chart', () => {
   it('should render without crash', () => {
-    store.dispatch(setWeatherData(weatherData));
-    renderWithRedux(<Chart />);
+    weather.setWeather(weatherData);
+    render(<Chart />);
     expect(document.querySelector('.recharts-responsive-container')).toBeInTheDocument();
   });
 });
